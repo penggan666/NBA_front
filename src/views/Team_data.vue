@@ -1,0 +1,184 @@
+<template>
+    <transition name="el-fade-in-linear">
+    <el-table :data="teamdatalist" style="width: 100%" v-loading="listLoading">
+        <el-table-column
+            fixed
+            type="index"
+            width="70"
+            >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="球队"
+            prop="t_name"
+        >
+        </el-table-column>
+        <el-table-column label="投篮">
+            <el-table-column
+            width="70"
+            label="命中率"
+            prop="shoot_1"
+            align="center"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="命中"
+            prop="shoot_2"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="出手"
+            prop="shoot_3"
+            sortable
+        >
+        </el-table-column>
+        </el-table-column>
+        <el-table-column label="三分">
+            <el-table-column
+            width="70"
+            label="命中率"
+            prop="three_1"
+            align="center"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="命中"
+            prop="three_2"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="出手"
+            prop="three_3"
+            sortable
+        >
+        </el-table-column>
+
+        </el-table-column>
+        
+        <el-table-column label="罚球">
+            <el-table-column
+            width="70"
+            label="命中率"
+            prop="penalty_1"
+            align="center"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="命中"
+            prop="penalty_2"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="出手"
+            prop="penalty_3"
+            sortable
+        >
+        </el-table-column>
+
+        </el-table-column>
+        <el-table-column label="篮板">
+            <el-table-column
+            width="70"
+            label="总篮板"
+            prop="backboard_1"
+            align="center"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="进攻"
+            prop="backboard_2"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="防守"
+            prop="backboard_3"
+            sortable
+        >
+        </el-table-column>
+
+        </el-table-column>
+        
+        <el-table-column
+            width="70"
+            label="助攻"
+            prop="assist"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="失误"
+            prop="mistake"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="抢断"
+            prop="steal"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="70"
+            label="盖帽"
+            prop="block"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="120"
+            label="犯规"
+            prop="foul"
+            sortable
+        >
+        </el-table-column>
+        <el-table-column
+            width="120"
+            label="得分"
+            prop="score"
+            sortable
+        >
+        </el-table-column>
+    </el-table>
+     </transition>
+</template>
+
+<script>
+import { requestgetIeam_data } from '../request/api';
+export default {
+    created(){
+        this.listLoading=true
+        requestgetIeam_data().then(res=>{
+            this.teamdatalist=res.data
+            this.listLoading=false
+        })
+    },
+    data(){
+        return{
+            teamdatalist:[],
+            listLoading:false
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
